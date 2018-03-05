@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yx.dao.DataConfigDao">
+    <resultMap id="ResultMap" type="dataConfig" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+	    <result column="type_code" property="typeCode" jdbcType="VARCHAR" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="BOOLEAN" />
+		<result column="note" property="note" jdbcType="VARCHAR" />
+		<result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+		<result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	</resultMap>
+    <select id="selectById" resultMap="ResultMap" parameterType="int">
+    	select * from data_configs where id=#{id}
+    </select>
+    
+    <select id="select" resultMap="ResultMap" parameterType="Map">
+    	select * from data_configs 
+    	<where>
+    		<if test="id!=&quot;&quot; and id!=&quot;0&quot; and id!=null">
+    			id=#{id}
+    		</if>
+    	</where>
+    	limit ${num},16
+    </select>
+    
+    <insert id="create" parameterType="dataConfig" keyProperty="id" useGeneratedKeys="true">
+    	insert into data_configs (id,name,`desc`,company_leaders_id) values(#{id},#{name},#{desc},#{company_leaders_id})
+    </insert>
+    <delete id="delete" parameterType="Integer">
+    	delete from data_configs where id=#{id}
+    </delete>
+    
+</mapper>
