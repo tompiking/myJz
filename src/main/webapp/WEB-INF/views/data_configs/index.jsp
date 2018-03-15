@@ -5,11 +5,14 @@
 <table>
 	<thead>
 		<tr>
-			<th width="20%"> 名称</th>
-		    <th width="10%"> 代码</th>
-		    <th width="10%"> 状态</th>
-		    <th width="40%"> 创建时间</th>
-		    <th width="20%"> 操作</th>
+			<th width="10%"> 分类</th>
+		    <th width="10%"> 分类代码</th>
+		    <th width="10%"> 名称</th>
+		    <th width="10%"> 名称代码</th>
+		    <th width="20%"> 说明</th>
+		    <th width="10%"> 是否禁用</th>
+		    <th width="20%"> 创建时间</th>
+		    <th width="10%"> 操作</th>
 		</tr>
 	</thead>
 	<c:if test="${data_configs.size()<=0}"> 
@@ -22,7 +25,10 @@
 			<tr>
 			    <td align="center">${config.typeName }</td>
 			    <td align="center">${config.typeCode }</td>
-			    <td align="center">${config.status }</td>
+			    <td align="center">${config.name }</td>
+			    <td align="center">${config.code }</td>
+			    <td align="center">${config.note }</td>
+			    <td align="center">${config.status ? "是" : "否" }</td>
 			    <td align="center">${config.createdAt }</td>
 			    <td align="center">
 			    	<a href="company/${config.id}/edit">修改</a> | 

@@ -24,7 +24,7 @@
     			id=#{id}
     		</if>
     	</where>
-    	limit ${num},16
+    	limit ${num},${count}
     </select>
     
     <insert id="create" parameterType="dataConfig" keyProperty="id" useGeneratedKeys="true">
